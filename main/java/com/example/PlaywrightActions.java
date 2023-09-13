@@ -38,6 +38,7 @@ public class PlaywrightActions {
     public static void closePlaywright() {
         if (playwright != null) {
             playwright.close();
+            playwright = null;
         } else System.err.println("Playwright is null");
     }
 
