@@ -19,13 +19,13 @@ public class PlaywrightActions {
         return context;
     }
 
-    public static Page navigateToPage(BrowserContext context, String url) {
+    static Page navigateToPage(BrowserContext context, String url) {
         Page page = context.newPage();
         page.navigate(url);
         return page;
     }
 
-    public static void closeBrowserData() {
+    static void closeBrowserData() {
         try {
             browserData.context.close();
             browserData.browser.close();
@@ -35,7 +35,7 @@ public class PlaywrightActions {
         }
     }
 
-    public static void closePlaywright() {
+    static void closePlaywright() {
         if (playwright != null) {
             playwright.close();
             playwright = null;
