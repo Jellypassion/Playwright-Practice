@@ -22,20 +22,23 @@ public class App {
 
     public static void main(String[] args) throws InterruptedException {
 
+        // execute if params will be provided manually
         takeParamsFromConsole();
 
-        BrowserContext browser = launchSlowMoChromeBrowser(100);
-        // take data from vacancy page and copy it to clipboard
-        Page page = navigateToPage(browser, vacancyPage);
-        VacancyData vacancyData = getDataFromVacancyPage(page);
-        copyToClipboard(vacancyData.strData());
+        try {
+            BrowserContext browser = launchSlowMoChromeBrowser(100);
+            // take data from vacancy page and copy it to clipboard
+            Page page = navigateToPage(browser, vacancyPage);
+            VacancyData vacancyData = getDataFromVacancyPage(page);
+            copyToClipboard(vacancyData.strData());
 
-        // try to paste data
-        Page page2 = navigateToPage(browser, googleDocPage);
-        pasteToGoogleDoc(page2, vacancyData, rowNumber);
+            // try to paste data
+            Page page2 = navigateToPage(browser, googleDocPage);
+            pasteToGoogleDoc(page2, vacancyData, rowNumber);
 //        Thread.sleep(5000);
-
-        closeBrowserData();
+        } finally {
+            closeBrowserData();
+        }
     }
 
     static void takeParamsFromConsole() {

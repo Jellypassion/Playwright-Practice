@@ -20,6 +20,7 @@ public class VacancyPage {
                 page.url(),
                 page.locator(dateSelector).textContent().trim()
         );
+        System.out.println("Vacancy data collected successfully:");
         System.out.println(dataList);
         var strValue = "";
         for (String it : dataList) {
