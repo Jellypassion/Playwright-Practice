@@ -8,12 +8,11 @@ import java.util.Scanner;
 import static com.example.GoogleDocPage.googleDocUrl;
 import static com.example.GoogleDocPage.pasteToGoogleDoc;
 import static com.example.Helpers.copyToClipboard;
-import static com.example.PlaywrightActions.*;
 import static com.example.VacancyPage.getDataFromVacancyPage;
 import static com.example.VacancyPage.VacancyData;
 
 
-public class App {
+public class App extends PlaywrightActions {
 
     //    static String vacancyPage = vacancyUrl;
     static String vacancyPage = "https://jobs.dou.ua/companies/extrawest/vacancies/239358/";
