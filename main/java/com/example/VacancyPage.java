@@ -14,9 +14,10 @@ public class VacancyPage {
     public static final String dateSelector = "//div[@class='date']";
 
     public static VacancyData getDataFromVacancyPage(Page page) {
+        var vacancyName = page.locator(vacancyNameSelector).textContent().replace(",", " ");
         var dataList = List.of(
                 page.locator(companyNameSelector).textContent(),
-                page.locator(vacancyNameSelector).textContent(),
+                vacancyName,
                 page.url(),
                 page.locator(dateSelector).textContent().trim()
         );

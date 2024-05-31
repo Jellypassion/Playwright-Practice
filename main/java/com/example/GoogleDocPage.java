@@ -19,9 +19,10 @@ public class GoogleDocPage {
     public static final String docsInsertLinkItemName = "Посилання";
 
 
-    public static void pasteToGoogleDoc(Page page, VacancyData vacancyData, int rowNumber) {
+    public static void pasteToGoogleDoc(Page page, VacancyData vacancyData, int rowNumber) throws InterruptedException {
         pressArrowDown(page, rowNumber - 1);
         page.keyboard().press("Meta+V");
+        // divide data separated by commas into columns
         page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName(dropdownArrowButtonName)).click();
         page.getByText(dropdownArrowDivideOptionText, new Page.GetByTextOptions().setExact(true)).click();
         page.keyboard().press("Escape");
@@ -30,11 +31,11 @@ public class GoogleDocPage {
         page.keyboard().press("ArrowRight");
         page.keyboard().press("Enter");
         page.keyboard().press("Enter");
+        // moving to the company name cell
         page.keyboard().press("ArrowUp");
         page.keyboard().press("ArrowLeft");
         page.keyboard().press("ArrowLeft");
-        // paste company link
-        page.keyboard().press("Meta+K");
+        page.keyboard().press("Meta+K");// paste hyperlink hotkey
         copyToClipboard(vacancyData.companyLink());
         page.keyboard().press("Meta+V");
         page.keyboard().press("Enter");
